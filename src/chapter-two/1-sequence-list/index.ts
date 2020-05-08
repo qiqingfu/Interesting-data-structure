@@ -67,6 +67,22 @@ class SequenceList {
   }
 
   /**
+   * 移除顺序表指定下标的元素
+   * @param index
+   */
+  removeElem(index: number):any {
+    if (index < 0 || index > this.array.length - 1) {
+      throw new Error(`${index}错误, 范围仅限 0 - ${this.array.length - 1} 区间`);
+    }
+    let elem = this.array[index];
+    for (let i = index; i <= this.array.length - 1; i++) {
+      this.array[i] = this.array[i + 1]
+    }
+
+    return elem;
+  }
+
+  /**
    * 获取顺序表的长度
    */
   getSize():number {

@@ -26,3 +26,10 @@ console.log('查找元素 1 所在的下标',sequencelist.indexOf(1));
 console.log('根据下标 2 向顺序表插入元素 7 ', sequencelist.appendElem(7, 2));
 console.log('查找元素 7 所在的下标',sequencelist.indexOf(7));
 console.log('顺序表中全部值', sequencelist.getArray());
+
+// 根据下标移除顺序表中的元素
+console.log('根据下标 6 移除顺序表中的元素', sequencelist.removeElem(6));
+console.log('顺序表中全部值', sequencelist.getArray());
+console.log('根据下标 6 移除顺序表中的元素', sequencelist.removeElem(4));
+console.log('顺序表中全部值', sequencelist.getArray());
+
