@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/head-plug-linked.ts',
+  entry: './src/index.ts',
   output: {
     filename: 'main.js'
   },
