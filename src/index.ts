@@ -1,3 +1,1 @@
-console.log('index.ts');
-
-import "./chapter-two/1-sequence-list/test"
+import "./chapter-two/2-single-linked/head-plug-linked-test";
