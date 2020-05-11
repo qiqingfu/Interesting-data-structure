@@ -1,1 +1,1 @@
-import "./chapter-two/2-single-linked/head-plug-linked-test";
+import "./chapter-two/2-single-linked/tail-plug-linked-test";

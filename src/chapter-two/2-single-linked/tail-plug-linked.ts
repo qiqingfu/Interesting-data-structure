@@ -11,17 +11,17 @@ class Elem<T> {
 }
 
 /**
- * 头插法单链表
+ * 单向链表 尾插法
  */
 class Linked {
-  head: any;
-  length: number;
+  private head: any;
+  private length: number;
+  private pointer: any;
   constructor() {
-    // 空的头指针
-    const head = new Elem<any>(null);
-    head.next = null;
-    this.head = head;
+    this.head = new Elem(null);
+    this.head.next = null;
     this.length = 0;
+    this.pointer = null;
   }
 
   /**
@@ -29,16 +29,15 @@ class Linked {
    * @param elem
    */
   pushElem(elem: any): number {
-    const node = new Elem<any>(elem);
-    const head = this.head;
-    if (head.next === null) {
-      head.next = node;
+    const newNode = new Elem(elem);
+    if (this.pointer === null) {
+      this.head.next = newNode;
     } else {
-      node.next = head.next;
-      head.next = node;
+      this.pointer.next = newNode;
     }
-
+    this.pointer = newNode;
     this.length++;
+
     return this.length;
   }
 
@@ -85,21 +84,22 @@ class Linked {
    * @param index
    */
   appendElem(val: any, index: number):boolean {
-    let p = this.head.next;
+    let p = this.head;
     let i = 0;
 
-    while (p && i < index - 1) {
-      p = p.next;
-      i++
+    if (index < 0 || index > this.length - 1) {
+      throw new Error(`下标 ${index} 范围错误, 应该在 0 - ${ this.length - 1 }区间`);
     }
 
-    if (!p.next || i > index - 1) {
-      return false;
+    while (p && i < index) {
+      p = p.next;
+      i++;
     }
 
     const newNode = new Elem(val);
     newNode.next = p.next;
     p.next = newNode;
+
     this.length++;
 
     return true;
