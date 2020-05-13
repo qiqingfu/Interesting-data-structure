@@ -89,9 +89,36 @@ class Linked {
    * 移除双向链表中第 index 个节点
    * @param index
    */
-  removeItem(index: number):any|false {
+  removeItem(index: number):any|boolean {
+    if (index < 0 || index > this.length - 1) {
+      throw new Error(`${index} 范围错误, 应该在 0 - ${this.length - 1} 区间`);
+    }
 
+    // 删除包括双向链表中的最后一个节点
+    // 且 最后一个节点的 next 为 null
+    let head = this.head.next;
+    let i = 0;
+
+    while (head && i < index) {
+      head = head.next;
+      i++
+    }
+
+    if (!head || i > index) {
+      return false;
+    }
+
+    // 如果删除的是最后一个的情况
+    const delNode = head;
+    (head.prev as any).next = head.next;
+
+    if (head.next !== null)
+      head.next.prev = head.prev;
+
+    this.length--;
+    return delNode.data;
   }
+
 
   /**
    * 获取单向链表中所有项

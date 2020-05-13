@@ -20,5 +20,9 @@ console.log('向双向链表中指定下标 2 插入一个元素 6', linked.inse
 console.log('向双向链表中指定下标 2 插入一个元素 6', linked.insertElem(7, 0));
 console.log('向双向链表中指定下标 2 插入一个元素 6', linked.insertElem(8, 6));
 
+// 根据下标删除双向链表中的节点
+console.log('根据下标 7 删除双向链表中的节点', linked.removeItem(7));
+console.log('根据下标 7 删除双向链表中的节点', linked.removeItem(5));
+
 console.log(linked.getAllElem());
 console.log(linked);
