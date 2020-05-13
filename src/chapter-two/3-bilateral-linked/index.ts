@@ -61,12 +61,12 @@ class Linked {
       return true;
     }
 
-    let head = this.head;
+    let head = this.head.next;
     let i = 0;
 
     while (head && i < index) {
-      head = <any>head.next;
-      i++
+      head = head.next;
+      i++;
     }
 
     if (!head || i > index) {
@@ -74,14 +74,23 @@ class Linked {
     }
 
     const newNode = new Node(elem);
-    (head.next as Node<any>).prev = newNode;
-    newNode.next = head.next;
-    newNode.prev = head;
-    head.next = newNode;
+    // head 为当前节点, 不是 i - 1 个节点
+    (head.prev as any).next = newNode;
+    newNode.prev = head.prev;
+    newNode.next = head;
+    head.prev = newNode;
 
     this.length++;
 
     return true;
+  }
+
+  /**
+   * 移除双向链表中第 index 个节点
+   * @param index
+   */
+  removeItem(index: number):any|false {
+
   }
 
   /**
