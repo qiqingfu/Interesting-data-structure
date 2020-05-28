@@ -1,1 +1,1 @@
-import "./chapter-two/3-bilateral-linked/index-test";
+import "./chapter-three/1-sequential-stack/index-test";
