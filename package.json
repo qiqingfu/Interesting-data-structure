@@ -4,8 +4,12 @@
   "description": "Interesting data structure",
   "main": "./src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test-c": "jest --coverage",
     "start": " cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "repository": {
     "type": "git",
@@ -19,9 +23,12 @@
   },
   "homepage": "https://github.com/qiqingfu/Interesting-data-structure#readme",
   "devDependencies": {
+    "@types/jest": "^25.2.3",
     "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^7.0.2",
     "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.1.0",
     "ts-loader": "^7.0.3",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
