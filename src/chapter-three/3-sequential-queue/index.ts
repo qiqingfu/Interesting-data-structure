@@ -53,3 +53,5 @@ class SequentialQueue<T> {
     return (this.rear - this.front + this.size) % this.size;
   }
 }
+
+export default SequentialQueue;
