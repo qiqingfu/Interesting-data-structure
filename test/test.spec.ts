@@ -1,5 +1,5 @@
-// import { sum } from "../src/sum.ts";
-//
-// test("math", () => {
-//    expect(sum(1,2)).toBe(3)
-// });
+import add from '../src/sum';
+
+test("math", () => {
+   expect(add(1,2)).toBe(3)
+});

@@ -1,7 +1,3 @@
-const sum = function (x: number, y:number):number {
-    return x + y;
-};
-
-export {
-    sum
+export default function (a:number, b:number):number {
+    return a + b;
 }
