@@ -1,6 +1,6 @@
-class SequenceList {
+class SequenceList<T = number> {
   private length: number;
-  private readonly array: any[];
+  private readonly array: T[];
 
   constructor(size: number) {
     this.array = new Array(size);
@@ -11,7 +11,7 @@ class SequenceList {
    * 向顺序表中顺序新增一个元素
    * @param elem
    */
-  pushElem(elem: any):number {
+  pushElem(elem: T):number {
     const i:number = this.length;
     this.array[i] = elem;
     this.length++;
@@ -23,7 +23,7 @@ class SequenceList {
    * 根据下标获取元素
    * @param index
    */
-  getElem(index: number): any {
+  getElem(index: number): T {
     if (index < 0 || index > this.array.length - 1) {
       throw new Error(`${index}错误, 范围仅限 0 - ${this.array.length - 1} 区间`);
     }
@@ -36,7 +36,7 @@ class SequenceList {
    * 如果没有找到则返回 -1
    * @param val
    */
-  indexOf(val: any):number {
+  indexOf(val: T):number {
     let index = -1;
     for (let i = 0; i < this.array.length; i++) {
       if (val === this.array[i]) {
@@ -53,7 +53,7 @@ class SequenceList {
    * @param val
    * @param index
    */
-  appendElem(val:any, index: number): boolean {
+  appendElem(val:T, index: number): boolean {
     if (index < 0 || index > this.array.length - 1) {
       throw new Error(`${index}错误, 范围仅限 0 - ${this.array.length - 1} 区间`);
     }
@@ -70,11 +70,11 @@ class SequenceList {
    * 移除顺序表指定下标的元素
    * @param index
    */
-  removeElem(index: number):any {
+  removeElem(index: number):T {
     if (index < 0 || index > this.array.length - 1) {
       throw new Error(`${index}错误, 范围仅限 0 - ${this.array.length - 1} 区间`);
     }
-    let elem = this.array[index];
+    const elem = this.array[index];
     for (let i = index; i <= this.array.length - 1; i++) {
       this.array[i] = this.array[i + 1]
     }
@@ -92,8 +92,8 @@ class SequenceList {
   /**
    * 获取顺序表中所有项
    */
-  getArray():any[] {
-    let array = [];
+  getArray():T[] {
+    const array = [];
     for (let i = 0; i < this.array.length; i++) {
       this.array[i] && (array[i] = this.array[i] )
     }
