@@ -3,4 +3,4 @@
  * entry
  */
 
-console.log("entry")
+const SequenceList = require("./chapter2/first-sequence-list/index.js")

@@ -12,7 +12,10 @@ module.exports = {
     path: path.join(__dirname, OUTPUT_FILEPATH),
   },
   resolve: {
-    extensions: ['.js', ".json"]
+    extensions: ['.js', ".json"],
+    alias: {
+      util: path.resolve(__dirname, "src/util")
+    }
   },
   devServer: {
     contentBase: path.join(__dirname, OUTPUT_FILEPATH),

@@ -2,6 +2,9 @@
  * Created by qiqf on 2020/9/12
  */
 
+const { createAssert } = require("util/index")
+const assert = createAssert("SequenceList")
+
 /**
  *
  * export SequenceList
@@ -23,7 +26,7 @@ function SequenceList(size) {
     return new SequenceList(size)
   }
 
-  this.maxSize = size
+  this.maxSize = size || 100
   this.length = 0
   this.elem = []
 }
@@ -36,6 +39,11 @@ function SequenceList(size) {
  * @return {boolean}
  */
 SequenceList.prototype.pushElem = function (elem) {
+  assert((this.length !== this.maxSize), "the sequence list is full.")
+  this.elem[this.length] = elem
+  this.length++
+
+  return true
 }
 
 /**
@@ -46,6 +54,8 @@ SequenceList.prototype.pushElem = function (elem) {
  * @return {any}
  */
 SequenceList.prototype.getElem = function (index) {
+  assert((index >= 1 || index <= this.length), "bit sequence beyond length range.")
+  return this.elem[index - 1]
 }
 
 /**
