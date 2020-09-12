@@ -1,0 +1,29 @@
+{
+  "name": "Interesting-data-structure",
+  "version": "1.0.0",
+  "description": "Interesting data structure",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qiqingfu/Interesting-data-structure.git"
+  },
+  "keywords": [
+    " data structure"
+  ],
+  "author": "qiqingfu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qiqingfu/Interesting-data-structure/issues"
+  },
+  "homepage": "https://github.com/qiqingfu/Interesting-data-structure#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.4.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
