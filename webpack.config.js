@@ -1,9 +1,10 @@
 /**
  * Created by qiqf on 2020/9/12
  */
-const path = require("path")
-const HtmlWebpackPlugin = require("html-webpack-plugin")
-const OUTPUT_FILEPATH = "dist"
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const OUTPUT_FILEPATH = 'dist'
 
 module.exports = {
   entry: path.resolve(__dirname, './src/index.js'),
@@ -12,15 +13,13 @@ module.exports = {
     path: path.join(__dirname, OUTPUT_FILEPATH),
   },
   resolve: {
-    extensions: ['.js', ".json"],
+    extensions: ['.js', '.json'],
     alias: {
-      util: path.resolve(__dirname, "src/util")
-    }
+      util: path.resolve(__dirname, 'src/util'),
+    },
   },
   devServer: {
     contentBase: path.join(__dirname, OUTPUT_FILEPATH),
   },
-  plugins: [
-    new HtmlWebpackPlugin()
-  ]
+  plugins: [new HtmlWebpackPlugin()],
 }

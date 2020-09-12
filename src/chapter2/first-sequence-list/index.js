@@ -2,8 +2,9 @@
  * Created by qiqf on 2020/9/12
  */
 
-const { createAssert } = require("util/index")
-const assert = createAssert("SequenceList")
+const { createAssert } = require('util/index')
+
+const assert = createAssert('SequenceList')
 
 /**
  *
@@ -21,7 +22,6 @@ module.exports = SequenceList
  * @constructor
  */
 function SequenceList(size) {
-
   if (!(this instanceof SequenceList)) {
     return new SequenceList(size)
   }
@@ -38,10 +38,10 @@ function SequenceList(size) {
  * @param {any} elem
  * @return {boolean}
  */
-SequenceList.prototype.pushElem = function (elem) {
-  assert((this.length !== this.maxSize), "the sequence list is full.")
+SequenceList.prototype.pushElem = function pushElem(elem) {
+  assert(this.length !== this.maxSize, 'the sequence list is full.')
   this.elem[this.length] = elem
-  this.length++
+  this.length += 1
 
   return true
 }
@@ -53,8 +53,11 @@ SequenceList.prototype.pushElem = function (elem) {
  * @param {number} index
  * @return {any}
  */
-SequenceList.prototype.getElem = function (index) {
-  assert((index >= 1 || index <= this.length), "bit sequence beyond length range.")
+SequenceList.prototype.getElem = function getElem(index) {
+  assert(
+    index >= 1 || index <= this.length,
+    'bit sequence beyond length range.'
+  )
   return this.elem[index - 1]
 }
 
@@ -65,8 +68,7 @@ SequenceList.prototype.getElem = function (index) {
  * @param {any} elem
  * @return {number}
  */
-SequenceList.prototype.findElem = function (elem) {
-}
+SequenceList.prototype.findElem = function findElem(elem) {}
 
 /**
  *
@@ -75,8 +77,7 @@ SequenceList.prototype.findElem = function (elem) {
  * @param {any} elem
  * @return {number} index
  */
-SequenceList.prototype.insertElem = function (elem, index) {
-}
+SequenceList.prototype.insertElem = function insertElem(elem, index) {}
 
 /**
  *
@@ -85,5 +86,4 @@ SequenceList.prototype.insertElem = function (elem, index) {
  * @param {number} index
  * @return {boolean}
  */
-SequenceList.prototype.deleteElem = function (index) {
-}
+SequenceList.prototype.deleteElem = function deleteElem(index) {}
