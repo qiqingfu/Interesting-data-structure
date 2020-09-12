@@ -10,20 +10,16 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
-  extends: [
-    'eslint:recommended',
-    'airbnb-base',
-    'plugin:prettier/recommended'
-  ],
-  plugins: [
-    'prettier'
-  ],
+  extends: ['eslint:recommended', 'airbnb-base', 'plugin:prettier/recommended'],
+  plugins: ['prettier'],
   rules: {
-    "prettier/prettier": ["error",
+    'prettier/prettier': [
+      'error',
       {
-        'endOfLine': 'auto',
-        'singleQuote': true,
-        'semi': false,
-      }],
-  }
-};
+        endOfLine: 'auto',
+        singleQuote: true,
+        semi: false,
+      },
+    ],
+  },
+}
