@@ -11,6 +11,9 @@ module.exports = {
     filename: 'bundle.js',
     path: path.join(__dirname, OUTPUT_FILEPATH),
   },
+  resolve: {
+    extensions: ['.js', ".json"]
+  },
   devServer: {
     contentBase: path.join(__dirname, OUTPUT_FILEPATH),
   },
