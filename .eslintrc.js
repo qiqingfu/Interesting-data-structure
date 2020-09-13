@@ -23,6 +23,7 @@ module.exports = {
     ],
     // https://cn.eslint.org/docs/rules/no-use-before-define
     'no-use-before-define': ['error', { functions: false, classes: true }],
+    'no-plusplus': 'off',
   },
   settings: {
     'import/resolver': {
