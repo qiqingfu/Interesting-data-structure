@@ -21,5 +21,15 @@ module.exports = {
         semi: false,
       },
     ],
+    // https://cn.eslint.org/docs/rules/no-use-before-define
+    'no-use-before-define': ['error', { functions: false, classes: true }],
+  },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['util', './src/util']],
+        extensions: ['.js', '.jsx', '.json'],
+      },
+    },
   },
 }
