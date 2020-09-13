@@ -70,7 +70,6 @@ SequenceList.prototype.getElem = function getElem(index) {
  */
 SequenceList.prototype.findIndex = function findIndex(elem) {
   let i
-  // [1,2,3,4,5,6]
   for (i = 0; i < this.length; i++) {
     if (this.elem[i] === elem) {
       i++
