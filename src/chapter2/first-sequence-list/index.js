@@ -35,7 +35,7 @@ function SequenceList(size) {
  *
  * create an elem
  *
- * @param {any} elem
+ * @param {number} elem
  * @return {boolean}
  */
 SequenceList.prototype.pushElem = function pushElem(elem) {

@@ -7,6 +7,7 @@ module.exports = {
     browser: true,
     node: true,
   },
+  globals: {},
   parserOptions: {
     parser: 'babel-eslint',
   },
@@ -24,11 +25,15 @@ module.exports = {
     // https://cn.eslint.org/docs/rules/no-use-before-define
     'no-use-before-define': ['error', { functions: false, classes: true }],
     'no-plusplus': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
   settings: {
     'import/resolver': {
       alias: {
-        map: [['util', './src/util']],
+        map: [
+          ['@', './src'],
+          ['util', './src/util'],
+        ],
         extensions: ['.js', '.jsx', '.json'],
       },
     },
