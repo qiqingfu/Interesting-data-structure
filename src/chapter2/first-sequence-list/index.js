@@ -50,12 +50,15 @@ SequenceList.prototype.pushElem = function pushElem(elem) {
  *
  * find the elements in the table below
  *
- * @param {number} i
+ * @param {number} index
  * @return {any}
  */
-SequenceList.prototype.getElem = function getElem(i) {
-  assert(!(i < 1 || i > this.length), 'bit sequence beyond length range.')
-  return this.elem[i - 1]
+SequenceList.prototype.getElem = function getElem(index) {
+  assert(
+    !(index < 1 || index > this.length),
+    'bit sequence beyond length range.'
+  )
+  return this.elem[index - 1]
 }
 
 /**
@@ -66,14 +69,14 @@ SequenceList.prototype.getElem = function getElem(i) {
  * @return {number}
  */
 SequenceList.prototype.findIndex = function findIndex(elem) {
-  let i
-  for (i = 0; i < this.length; i++) {
-    if (this.elem[i] === elem) {
-      i++
+  let i = 0
+  for (let j = 0; j < this.length; j++) {
+    if (this.elem[j] === elem) {
+      i = j + 1
       break
     }
   }
-  return i
+  return i || -1
 }
 
 /**
@@ -86,7 +89,7 @@ SequenceList.prototype.findIndex = function findIndex(elem) {
  */
 SequenceList.prototype.insertElem = function insertElem(elem, index) {
   assert(
-    index >= 1 || index <= this.length,
+    !(index < 1 || index > this.length),
     'bit sequence beyond length range.'
   )
   assert(this.length !== this.maxSize, 'the sequence list is full.')
@@ -109,12 +112,12 @@ SequenceList.prototype.insertElem = function insertElem(elem, index) {
  */
 SequenceList.prototype.deleteElem = function deleteElem(index) {
   assert(
-    index >= 1 || index <= this.length,
+    !(index < 1 || index > this.length),
     'bit sequence beyond length range.'
   )
 
   const elem = this.elem[index - 1]
-  for (let i = index; i < this.length; i++) {
+  for (let i = index; i <= this.length; i++) {
     this.elem[i - 1] = this.elem[i]
   }
   this.length--

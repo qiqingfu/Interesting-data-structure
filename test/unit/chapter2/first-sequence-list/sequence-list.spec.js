@@ -88,4 +88,111 @@ describe('SequenceList', () => {
       expect(sequenceList.getElem(sequenceList.length)).toBe(6)
     })
   })
+
+  describe('findIndex', () => {
+    let sequenceList
+    const createSeq = () => {
+      sequenceList = new SequenceList()
+      const lists = ['a', 'b', 'c', 'd', 'e', 'f']
+
+      for (let i = 0; i < lists.length; i++) {
+        const val = lists[i]
+        sequenceList.pushElem(val)
+      }
+    }
+
+    beforeEach(() => {
+      createSeq()
+    })
+
+    test('findIndex 获取 a 元素的位序', () => {
+      expect(sequenceList.findIndex('a')).toBe(1)
+    })
+
+    test('findIndex 获取 f 元素的位序', () => {
+      expect(sequenceList.findIndex('f')).toBe(6)
+    })
+
+    test('findIndex 查询不存在的元素时, 位序返回 -1', () => {
+      expect(sequenceList.findIndex('y')).toBe(-1)
+    })
+  })
+
+  describe('insertElem', () => {
+    let sequenceList
+    const createSeq = () => {
+      sequenceList = new SequenceList()
+      const lists = ['a', 'b', 'c']
+
+      for (let i = 0; i < lists.length; i++) {
+        const val = lists[i]
+        sequenceList.pushElem(val)
+      }
+    }
+
+    beforeEach(() => {
+      createSeq()
+    })
+
+    test('insertElem 插入元素的位序小于1时, 报错', () => {
+      expect(() => {
+        sequenceList.insertElem('d', 0)
+      }).toThrowError('[SequenceList] bit sequence beyond length range.')
+    })
+
+    test('insertElem 插入元素的位序大于顺序表的长度时, 报错', () => {
+      expect(() => {
+        sequenceList.insertElem('d', sequenceList.length + 1)
+      }).toThrowError('[SequenceList] bit sequence beyond length range.')
+    })
+
+    test('insertElem 在位序1插入元素 d', () => {
+      expect(sequenceList.insertElem('d', 1)).toBeTruthy()
+      expect(sequenceList.length).toBe(4)
+      expect(sequenceList.elem).toEqual(['d', 'a', 'b', 'c'])
+    })
+
+    test('insertElem 在位序3插入元素 d', () => {
+      expect(sequenceList.insertElem('d', 3)).toBeTruthy()
+      expect(sequenceList.length).toBe(4)
+      expect(sequenceList.elem).toEqual(['a', 'b', 'd', 'c'])
+    })
+  })
+
+  describe('deleteElem', () => {
+    let sequenceList
+    const createSeq = () => {
+      sequenceList = new SequenceList()
+      const lists = ['a', 'b', 'c']
+
+      for (let i = 0; i < lists.length; i++) {
+        const val = lists[i]
+        sequenceList.pushElem(val)
+      }
+    }
+
+    beforeEach(() => {
+      createSeq()
+    })
+
+    test('deleteElem 删除的位序小于1时, 报错', () => {
+      expect(() => {
+        sequenceList.deleteElem(0)
+      }).toThrowError('[SequenceList] bit sequence beyond length range.')
+    })
+
+    test('deleteElem 删除的位序大于顺序表的长度时, 报错', () => {
+      expect(() => {
+        sequenceList.deleteElem(sequenceList.length + 1)
+      }).toThrowError('[SequenceList] bit sequence beyond length range.')
+    })
+
+    test('deleteElem 位序为 1 的元素', () => {
+      expect(sequenceList.deleteElem(1)).toBe('a')
+      expect(sequenceList.length).toBe(2)
+      console.log(sequenceList.elem)
+      expect(sequenceList.elem[0]).toEqual('b')
+      expect(sequenceList.elem[1]).toEqual('c')
+    })
+  })
 })
