@@ -50,15 +50,12 @@ SequenceList.prototype.pushElem = function pushElem(elem) {
  *
  * find the elements in the table below
  *
- * @param {number} index
+ * @param {number} i
  * @return {any}
  */
-SequenceList.prototype.getElem = function getElem(index) {
-  assert(
-    index >= 1 || index <= this.length,
-    'bit sequence beyond length range.'
-  )
-  return this.elem[index - 1]
+SequenceList.prototype.getElem = function getElem(i) {
+  assert(!(i < 1 || i > this.length), 'bit sequence beyond length range.')
+  return this.elem[i - 1]
 }
 
 /**
