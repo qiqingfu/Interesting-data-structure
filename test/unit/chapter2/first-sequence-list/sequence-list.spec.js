@@ -190,7 +190,6 @@ describe('SequenceList', () => {
     test('deleteElem 位序为 1 的元素', () => {
       expect(sequenceList.deleteElem(1)).toBe('a')
       expect(sequenceList.length).toBe(2)
-      console.log(sequenceList.elem)
       expect(sequenceList.elem[0]).toEqual('b')
       expect(sequenceList.elem[1]).toEqual('c')
     })
