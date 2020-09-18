@@ -121,4 +121,43 @@ describe('OneWayLinkedList', () => {
       expect(oneWayLinked.getElem(3)).toBe('b')
     })
   })
+
+  describe('deleteElem', () => {
+    beforeEach(beforeEachFn)
+
+    test('删除的 index 小于 1 时, 报错', () => {
+      expect(() => {
+        oneWayLinked.deleteElem(0)
+      }).toThrowError(
+        '[OneWayLinkedList] index illegal value. it should be 1 <= index <= n'
+      )
+    })
+
+    test('删除的 index 大于单链表长度时, 报错', () => {
+      expect(() => {
+        oneWayLinked.deleteElem(5)
+      }).toThrowError(
+        '[OneWayLinkedList] index illegal value. it should be 1 <= index <= n'
+      )
+    })
+
+    test('删除的 index 为 1 的节点数据', () => {
+      expect(oneWayLinked.deleteElem(1)).toBe('d')
+      expect(oneWayLinked.length).toBe(3)
+      const { head } = oneWayLinked
+      const p = head.next
+      expect(p.data).toBe('c')
+      expect(p.next.data).toBe('b')
+    })
+
+    test('删除的 index 为 4 的节点数据', () => {
+      expect(oneWayLinked.deleteElem(4)).toBe('a')
+      expect(oneWayLinked.length).toBe(3)
+      const { head } = oneWayLinked
+      const p = head.next
+      expect(p.data).toBe('d')
+      expect(p.next.data).toBe('c')
+      expect(oneWayLinked.getElem(3)).toBe('b')
+    })
+  })
 })

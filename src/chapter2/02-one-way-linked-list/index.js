@@ -162,8 +162,8 @@ OneWayLinkedList.prototype.deleteElem = function deleteElem(index) {
   }
 
   assert(
-    p.next && j > index - 1,
-    'index illegal value. it should be 1 <= index < n'
+    p.next && index - 1 >= j,
+    'index illegal value. it should be 1 <= index <= n'
   )
 
   const delNode = p.next
