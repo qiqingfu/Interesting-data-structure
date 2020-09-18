@@ -1,7 +1,7 @@
 /**
  * Created by qiqf on 2020/9/15
  */
-import SequenceList from '@/chapter2/first-sequence-list/index'
+import SequenceList from '@/chapter2/01-sequence-list/index'
 import { describe, test, expect, beforeEach } from '@jest/globals'
 
 describe('SequenceList', () => {

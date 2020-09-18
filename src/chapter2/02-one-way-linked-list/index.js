@@ -36,12 +36,13 @@ function Node(data, next) {
  * @param {string} options.insertWay. default head
  * @constructor
  */
-function OneWayLinkedList(options) {
+function OneWayLinkedList(options = {}) {
   if (!(this instanceof OneWayLinkedList)) {
     return new OneWayLinkedList(options)
   }
 
   this.insertWay = options.insertWay || 'head'
+  this.length = 0
   this.head = new Node()
 }
 
@@ -59,6 +60,7 @@ OneWayLinkedList.prototype.createElem = function createElem(data) {
 
   const { head } = this
   head.next = new Node(data, head.next)
+  this.length++
 
   return true
 }
@@ -132,6 +134,7 @@ OneWayLinkedList.prototype.insertElem = function insertElem(index, data) {
   assert(p && j > index - 1, 'index illegal value. it should be 1 <= index < n')
 
   head.next = new Node(data, head.next)
+  this.length++
 
   return true
 }
@@ -162,6 +165,7 @@ OneWayLinkedList.prototype.deleteElem = function deleteElem(index) {
 
   const delNode = p.next
   p.next = delNode.next
+  this.length--
 
   return delNode.data
 }
