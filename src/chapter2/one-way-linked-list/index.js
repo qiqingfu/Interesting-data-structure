@@ -104,3 +104,64 @@ OneWayLinkedList.prototype.hasElem = function hasElem(data) {
 
   return !!p
 }
+
+/**
+ * insert a new node at the specified location
+ *
+ * @param {number} index
+ * @param {any} data
+ * @return {boolean}
+ * [head] -> [a] -> [b] -> [c] -> [d]
+ * index = 3
+ * find b(3 - 1)
+ */
+OneWayLinkedList.prototype.insertElem = function insertElem(index, data) {
+  const { head } = this
+  let p = head
+  let j = 0
+
+  while (p && j < index - 1) {
+    p = p.next
+    j++
+  }
+
+  /**
+   * !p maybe index > linkedList.length
+   * j > index - 1 maybe the index is 0
+   */
+  assert(p && j > index - 1, 'index illegal value. it should be 1 <= index < n')
+
+  head.next = new Node(data, head.next)
+
+  return true
+}
+
+/**
+ * Delete the node that specified the subscript
+ *
+ * @param {number} index
+ * @return {any}
+ * [head] -> [a] -> [b] -> [c] -> [d]
+ * index = 3
+ * find b(3 - 1) node
+ */
+OneWayLinkedList.prototype.deleteElem = function deleteElem(index) {
+  const { head } = this
+  let p = head
+  let j = 0
+
+  while (p.next && j < index - 1) {
+    p = p.next
+    j++
+  }
+
+  assert(
+    p.next && j > index - 1,
+    'index illegal value. it should be 1 <= index < n'
+  )
+
+  const delNode = p.next
+  p.next = delNode.next
+
+  return delNode.data
+}
