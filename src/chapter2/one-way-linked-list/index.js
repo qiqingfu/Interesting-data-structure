@@ -6,6 +6,10 @@
  * 单向链表
  */
 
+const { createAssert } = require('util/index')
+
+const assert = createAssert('OneWayLinkedList')
+
 /**
  * export OneWayLinkedList
  *
@@ -47,9 +51,9 @@ function OneWayLinkedList(options) {
  * @param {any|Array} data
  * @return {boolean}
  */
-OneWayLinkedList.prototype.create = function createNode(data) {
+OneWayLinkedList.prototype.createElem = function createElem(data) {
   if (Array.isArray(data)) {
-    data.forEach(this.create.bind(this))
+    data.forEach(this.createElem.bind(this))
     return true
   }
 
@@ -57,4 +61,46 @@ OneWayLinkedList.prototype.create = function createNode(data) {
   head.next = new Node(data, head.next)
 
   return true
+}
+
+/**
+ * Based on index values
+ *
+ * @param {number} index
+ * @return {any}
+ */
+OneWayLinkedList.prototype.getElem = function getElem(index) {
+  const { head } = this
+  let p = head.next
+  let j = 1
+
+  while (j < index && p) {
+    p = p.next
+    j++
+  }
+
+  /**
+   * !p maybe index > linkedList.length
+   * j > index maybe the index is 0
+   */
+  assert(p && j > index, ' index illegal value. it should be 1 <= index < n')
+
+  return p.data
+}
+
+/**
+ * Does the lookup value exist
+ *
+ * @param {any} data
+ * @return {boolean}
+ */
+OneWayLinkedList.prototype.hasElem = function hasElem(data) {
+  const { head } = this
+  let p = head.next
+
+  while (p && p.data !== data) {
+    p = p.next
+  }
+
+  return !!p
 }
