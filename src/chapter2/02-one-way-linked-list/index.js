@@ -76,16 +76,16 @@ OneWayLinkedList.prototype.getElem = function getElem(index) {
   let p = head.next
   let j = 1
 
-  while (j < index && p) {
+  while (p && j < index) {
     p = p.next
     j++
   }
 
   /**
    * !p maybe index > linkedList.length
-   * j > index maybe the index is 0
+   * index < j maybe the index is 0
    */
-  assert(p && j > index, ' index illegal value. it should be 1 <= index < n')
+  assert(p && index >= j, 'index illegal value. it should be 1 <= index <= n')
 
   return p.data
 }
@@ -122,18 +122,21 @@ OneWayLinkedList.prototype.insertElem = function insertElem(index, data) {
   let p = head
   let j = 0
 
-  while (p && j < index - 1) {
+  while (p.next && j < index - 1) {
     p = p.next
     j++
   }
 
   /**
-   * !p maybe index > linkedList.length
-   * j > index - 1 maybe the index is 0
+   * !p.next maybe index > linkedList.length
+   * j < index - 1 maybe the index is 0
    */
-  assert(p && j > index - 1, 'index illegal value. it should be 1 <= index < n')
+  assert(
+    p.next && index - 1 >= j,
+    'index illegal value. it should be 1 <= index <= n'
+  )
 
-  head.next = new Node(data, head.next)
+  p.next = new Node(data, p.next)
   this.length++
 
   return true
