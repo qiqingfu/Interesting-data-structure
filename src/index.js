@@ -4,3 +4,5 @@
  */
 
 const SequenceList = require('./chapter2/01-sequence-list/index.js')
+
+console.log(SequenceList)

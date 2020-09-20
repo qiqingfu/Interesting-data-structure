@@ -1,20 +1,23 @@
 {
-  "name": "Interesting-data-structure",
+  "name": "interesting-data-structure",
   "version": "1.0.0",
   "description": "Interesting data structure",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack --config webpack.config.js",
-    "lint": "eslint src/**/*.js --fix",
-    "test": "jest"
+    "lint": "eslint src test",
+    "test": "npm run lint && jest",
+    "coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/qiqingfu/Interesting-data-structure.git"
   },
   "keywords": [
-    " data structure"
+    "data structure",
+    "study",
+    "JavaScript"
   ],
   "author": "qiqingfu",
   "license": "ISC",
