@@ -64,7 +64,9 @@ TwoWayLinkedList.prototype.createElem = function createElem(data) {
   const newNode = new Node(data)
 
   newNode.next = head.next
-  head.next.prev = newNode
+  if (head.next) {
+    head.next.prev = newNode
+  }
   newNode.prev = head
   head.next = newNode
 
@@ -80,22 +82,9 @@ TwoWayLinkedList.prototype.createElem = function createElem(data) {
  * @return {any}
  */
 TwoWayLinkedList.prototype.getElem = function getElem(index) {
-  const { head } = this
-  let p = head.next
-  let j = 1
+  const node = this._getNode(index)
 
-  while (p && j < index) {
-    p = p.next
-    j++
-  }
-
-  /**
-   * !p maybe index > linkedList.length
-   * index < j maybe the index is 0
-   */
-  assert(p && index >= j, 'index illegal value. it should be 1 <= index <= n')
-
-  return p.data
+  return node ? node.data : node
 }
 
 /**
@@ -124,15 +113,15 @@ TwoWayLinkedList.prototype.hasElem = function hasElem(data) {
  */
 TwoWayLinkedList.prototype.insertElem = function insertElem(index, data) {
   const { head } = this
-  let p = head
-  let j = 0
+  let p = head.next
+  let j = 1
 
   while (p && j < index) {
     p = p.next
     j++
   }
 
-  assert(p && index > j, 'index illegal value. it should be 1 <= index <= n')
+  assert(p && index >= j, 'index illegal value. it should be 1 <= index <= n')
 
   // insert before p node
   const newNode = new Node(data)
@@ -178,4 +167,30 @@ TwoWayLinkedList.prototype.deleteElem = function deleteElem(index) {
   this.length--
 
   return p.data
+}
+
+/**
+ * Find nodes according to index. easier for test cases and underlying operations
+ *
+ * @private
+ * @param {number} index
+ * @return {Object}
+ */
+TwoWayLinkedList.prototype._getNode = function getNode(index) {
+  const { head } = this
+  let p = head.next
+  let j = 1
+
+  while (p && j < index) {
+    p = p.next
+    j++
+  }
+
+  /**
+   * !p maybe index > linkedList.length
+   * index < j maybe the index is 0
+   */
+  assert(p && index >= j, 'index illegal value. it should be 1 <= index <= n')
+
+  return p || null
 }

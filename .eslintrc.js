@@ -26,6 +26,7 @@ module.exports = {
     'no-use-before-define': ['error', { functions: false, classes: true }],
     'no-plusplus': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'no-underscore-dangle': 'off',
   },
   settings: {
     'import/resolver': {
