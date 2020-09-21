@@ -68,5 +68,114 @@ TwoWayLinkedList.prototype.createElem = function createElem(data) {
   newNode.prev = head
   head.next = newNode
 
+  this.length++
+
   return true
+}
+
+/**
+ * Based on index values
+ *
+ * @param {number} index
+ * @return {any}
+ */
+TwoWayLinkedList.prototype.getElem = function getElem(index) {
+  const { head } = this
+  let p = head.next
+  let j = 1
+
+  while (p && j < index) {
+    p = p.next
+    j++
+  }
+
+  /**
+   * !p maybe index > linkedList.length
+   * index < j maybe the index is 0
+   */
+  assert(p && index >= j, 'index illegal value. it should be 1 <= index <= n')
+
+  return p.data
+}
+
+/**
+ * Does the lookup value exist
+ *
+ * @param {any} data
+ * @return {boolean}
+ */
+TwoWayLinkedList.prototype.hasElem = function hasElem(data) {
+  const { head } = this
+  let p = head.next
+
+  while (p && p.data !== data) {
+    p = p.next
+  }
+
+  return !!p
+}
+
+/**
+ * insert a new node at the specified location
+ *
+ * @param {number} index
+ * @param {any} data
+ * @return {boolean}
+ */
+TwoWayLinkedList.prototype.insertElem = function insertElem(index, data) {
+  const { head } = this
+  let p = head
+  let j = 0
+
+  while (p && j < index) {
+    p = p.next
+    j++
+  }
+
+  assert(p && index > j, 'index illegal value. it should be 1 <= index <= n')
+
+  // insert before p node
+  const newNode = new Node(data)
+
+  newNode.prev = p.prev
+  p.prev.next = newNode
+  newNode.next = p
+  p.prev = newNode
+
+  this.length++
+
+  return true
+}
+
+/**
+ * Delete the node that specified the subscript
+ *
+ * @param {number} index
+ * @return {any}
+ */
+TwoWayLinkedList.prototype.deleteElem = function deleteElem(index) {
+  const { head } = this
+  let p = head.next
+  let j = 1
+
+  while (p && j < index) {
+    p = p.next
+    j++
+  }
+
+  /**
+   * !p maybe index > linkedList.length
+   * index < j maybe the index is 0
+   */
+  assert(p && index >= j, 'index illegal value. it should be 1 <= index <= n')
+
+  // p had next node
+  if (p.next) {
+    p.next.prev = p.prev
+  }
+  p.prev.next = p.next
+
+  this.length--
+
+  return p.data
 }
