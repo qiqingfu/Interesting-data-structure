@@ -6,10 +6,6 @@
  * 双向链表
  */
 
-const { createAssert } = require('util/index')
-
-const assert = createAssert('TwoWayLinkedList')
-
 /**
  * export TwoWayLinkedList
  *
