@@ -1,6 +1,6 @@
 {
   "name": "interesting-data-structure",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Interesting data structure",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,8 @@
     "lint": "eslint src test",
     "test": "npm run lint && jest",
     "coverage": "jest --coverage",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,7 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.3.0",
     "commitizen": "^4.2.1",
+    "conventional-changelog-cli": "^2.1.0",
     "eslint": "^7.8.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
