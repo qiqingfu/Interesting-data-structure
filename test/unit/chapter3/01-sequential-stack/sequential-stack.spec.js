@@ -39,4 +39,42 @@ describe('SequentialStack', () => {
       expect(sequentialStack.stack.length).toBe(10)
     })
   })
+
+  describe('pop', () => {
+    test('SequentialStack.pop 出栈栈顶的一个元素 c', () => {
+      const sequentialStack = SequentialStack(10)
+      sequentialStack.push(1)
+      sequentialStack.push(2)
+      sequentialStack.push(3)
+
+      expect(sequentialStack.pop()).toBe(3)
+      expect(sequentialStack.top).toBe(2)
+    })
+
+    test('SequentialStack.pop 当栈空时出栈一个元素 c, 返回结果为 null', () => {
+      const sequentialStack = SequentialStack()
+      expect(sequentialStack.pop()).toBeNull()
+      expect(sequentialStack.top).toBe(0)
+      expect(sequentialStack.base).toBe(0)
+    })
+  })
+
+  describe('getTop', () => {
+    test('SequentialStack.getTop 获取栈顶元素, 栈顶指针并不变化', () => {
+      const sequentialStack = SequentialStack(10)
+      sequentialStack.push(1)
+      sequentialStack.push(2)
+      sequentialStack.push(3)
+
+      expect(sequentialStack.getTop()).toBe(3)
+      expect(sequentialStack.top).toBe(3)
+    })
+
+    test('SequentialStack.getTop 当为空栈时, 获取栈顶元素返回 -1', () => {
+      const sequentialStack = SequentialStack()
+      expect(sequentialStack.getTop()).toBe(-1)
+      expect(sequentialStack.top).toBe(0)
+      expect(sequentialStack.base).toBe(0)
+    })
+  })
 })
