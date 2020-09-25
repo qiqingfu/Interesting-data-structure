@@ -2,7 +2,7 @@
  * Created by qiqf on 2020/9/25
  */
 import SequentialStack from '@/chapter3/01-sequential-stack/index'
-import { describe, test, expect, beforeEach } from '@jest/globals'
+import { describe, test, expect } from '@jest/globals'
 
 describe('SequentialStack', () => {
   describe('SequentialStack 非实例', () => {
