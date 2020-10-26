@@ -31,8 +31,8 @@ function ChainStack(maxSize) {
     return new ChainStack(maxSize)
   }
 
-  this.maxSize = maxSize
-  this.base = new Node()
+  this.maxSize = maxSize || 100
+  this.base = new Node('__root__')
   this.top = this.base
   this.length = 0
 }
@@ -46,6 +46,8 @@ function ChainStack(maxSize) {
 ChainStack.prototype.push = function push(data) {
   this.top = new Node(data, this.top)
   this.length++
+
+  return true
 }
 
 /**
@@ -54,7 +56,7 @@ ChainStack.prototype.push = function push(data) {
  * @returns {any|null}
  */
 ChainStack.prototype.pop = function pop() {
-  if (this.top === this.base) return false
+  if (this.top === this.base) return null
 
   const p = this.top
   this.top = this.top.next
