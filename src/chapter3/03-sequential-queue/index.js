@@ -35,12 +35,12 @@ function SequentialQueue(maxSize) {
  * @return {boolean}
  */
 SequentialQueue.prototype.push = function push(data) {
-  this.base[this.rear] = data
-
   /**
    * 队列已满的情况
    */
   if ((this.rear + 1) % this.maxSize === this.front) return false
+
+  this.base[this.rear] = data
 
   /**
    * 防止超出队列的最大长度
@@ -62,6 +62,7 @@ SequentialQueue.prototype.shift = function shift() {
   if (this.front === this.rear) return null
 
   const val = this.base[this.front]
+  this.base[this.front] = undefined
   this.front = (this.front + 1) % this.maxSize
 
   return val
