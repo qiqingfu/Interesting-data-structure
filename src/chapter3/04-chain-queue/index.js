@@ -65,7 +65,8 @@ ChainQueue.prototype.shift = function shift() {
    * 当链队列中只有一个节点时
    */
   if (this.rear === p) {
-    this.front = this.rear
+    this.front = this.base
+    this.rear = this.base
   }
   this.length--
 
